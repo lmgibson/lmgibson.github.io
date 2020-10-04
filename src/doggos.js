@@ -1,5 +1,6 @@
 'use strict'
 
+
 // Adding doggo-image generation
 let dogButton = document.getElementById('give-dog')
 
@@ -16,6 +17,13 @@ dogButton.addEventListener("click", evt => {
             });
         })
 })
+
+// Adding the date
+let today = new Date()
+let formatDate = today.toDateString()
+let dateText = document.getElementById('date')
+
+dateText.innerHTML = `Today's date: ${formatDate}\n`
 
 // Old ye api code
 /*

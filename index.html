@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dogs and Tasks</title>
     <meta name="description" content="A learning experience with Dogs and Tasks">
-    <script defer src="app.js" charset="utf-8"></script>
+    <script defer src="src/doggos.js" charset="utf-8"></script>
+    <script defer src="src/date.js" charset="utf-8"></script>
     <noscript>You need to enable JavaScript to view the full site</noscript>
     
     <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
@@ -19,8 +20,7 @@
 
         <nav class="nav">
             <div class="nav-left">
-                <a href="index.html" class="active">Index</a>
-                <a href="home.html">Home</a>
+                <a href="index.html" class="active text-dark">🦴 Doggos and ✅ Tasks</a>
             </div>
             <div class="nav-center">
                 <a href="index.html" class="brand">
@@ -36,13 +36,25 @@
         <div class="inner">
 
             <div class="section">
-                <h1 class="text-primary text-center">Doggo's Corner</h1>
+                <h1 class="text-primary text-center">Doggo Corner</h1>
                 <div class="row is-center">
-                    <a id="give-dog" class="button secondary">🐶</a>
+                    <a id="give-dog" class="button outline dark">🐶</a>
                 </div>
                 <div id="dog-pic" class="row is-center">
                     <!-- dog pic goes here -->
                 </div>
+            </div>
+
+            <div class="section">
+                <h1 class="text-primary text-center">Task Timeline</h1>
+                <p id="date">
+                    <!-- insert date here -->
+                </p>
+                <ol>
+                    <li class="list">Edit the head</li>
+                    <li class="list">Edit the body</li>
+                    <li>Link to Javascript</li>
+                </ol>
             </div>
 
         <!-- Old ye api code
