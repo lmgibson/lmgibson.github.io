@@ -1,6 +1,7 @@
 'use strict'
 
 
+
 // Adding doggo-image generation
 let dogButton = document.getElementById('give-dog')
 

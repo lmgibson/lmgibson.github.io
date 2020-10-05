@@ -9,10 +9,24 @@
     <meta name="description" content="A learning experience with Dogs and Tasks">
     <script defer src="src/doggos.js" charset="utf-8"></script>
     <script defer src="src/date.js" charset="utf-8"></script>
+    <script src="assets/jquery.min.js"></script>
+    <script>
+        $ ( document ).ready(function() {
+            $( "a" ).hover(function(event)  {
+                $( "a" ).toggleClass( "test" )
+            })
+        })
+    </script>
     <noscript>You need to enable JavaScript to view the full site</noscript>
     
     <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+
+    <style>
+        a.test {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,6 +48,11 @@
         </nav>
 
         <div class="inner">
+            <h1> Doggo's are
+                <span class="typer" id="main" data-words="love,fun,forever,life" data-delay="100" data-deleteDelay="1000"></span>
+                <span class="cursor" data-owner="main"></span>
+            </h1>
+            <script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
 
             <div class="section">
                 <h1 class="text-primary text-center">Doggo Corner</h1>
@@ -70,7 +89,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer id="about">
         <p>👋🏼 Made by 
             <a href="https://github.com/lmgibson" target="_blank">
                 Landon Gibson
