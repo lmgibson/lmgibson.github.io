@@ -14,10 +14,9 @@ let i=0
 //         $( "a" ).toggleClass( "test" )
 //     })
 
-//     $( "#give-dog" ).click(function() {
-//         let num = Math.floor(Math.random() * doggoMotivations.length)
-//         $( `<p>${doggoMotivations[num]}</p>` ).appendTo( "#message" )
-//     })
+    // $( "#give-dog" ).click(function() {
+        
+    // })
 
 //     $( "a" ).click(function(event) {
 //         if (i < trueDoggoLoverCheck.length){
