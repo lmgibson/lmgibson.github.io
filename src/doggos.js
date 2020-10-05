@@ -1,5 +1,15 @@
 'use strict'
 
+let doggoMotivations = [
+    'What a good boy',
+    'The goodest girl',
+    'Woof!',
+    'Chonkkkkk',
+    'Dawww',
+    'This doggo wants you to be happy',
+    'This doggo says: "Have a good day hooman!',
+    'Hi hooman!'
+]
 
 
 // Adding doggo-image generation
@@ -8,12 +18,14 @@ let dogButton = document.getElementById('give-dog')
 dogButton.addEventListener("click", evt => {
     
     let dogDiv = document.getElementById('dog-pic')
+    let num = Math.floor(Math.random() * doggoMotivations.length)
+    console.log(num);
 
     fetch('https://api.thedogapi.com/v1/images/search')
         .then(res => res.json())
         .then(dogs => {
             dogs.forEach(dog => {
-                dogDiv.innerHTML = `<h3> Here is this dog wishing you the best day 👍🏼 </h3>
+                dogDiv.innerHTML = `<h3>${doggoMotivations[num]}</h3>
                 <img src="${dog.url}" alt="woofers" />`
             });
         })
