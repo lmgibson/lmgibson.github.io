@@ -1,14 +1,11 @@
 'use strict'
 
 let doggoMotivations = [
-    'What a good boy',
-    'The goodest girl',
+    'A good boy',
+    'A good girl',
     'Woof!',
-    'Chonkkkkk',
-    'Dawww',
-    'This doggo wants you to be happy',
-    'This doggo says: "Have a good day hooman!',
-    'Hi hooman!'
+    'Chonk',
+    'Hi human!'
 ]
 
 
