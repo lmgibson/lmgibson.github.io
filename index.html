@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dogs and Tasks</title>
-    <meta name="description" content="A learning experience with Dogs and Tasks">
-    <script defer src="src/doggos.js" charset="utf-8"></script>
+    <title>Data, Analytics, Causal Inference - Landon Gibson</title>
+    <meta name="description" content="A mental data dump">
+    <script defer src="src/main.js" charset="utf-8"></script>
+    <script defer src="src/jquery_test.js" charset="utf-8"></script>
     <script src="assets/jquery.min.js"></script>
     <script src="assets/require.js"></script>
-    <script src="src/main.js"></script>
     <noscript>You need to enable JavaScript to view the full site</noscript>
     
     <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
@@ -28,47 +28,46 @@
 
         <nav class="nav">
             <div class="nav-left">
-                <a href="index.html" class="active text-dark">🦴 Doggos and ✅ Tasks</a>
+                <a href="index.html" class="active text-dark"> 🔢 Data and 🔄 Causality</a>
             </div>
             <div class="nav-center">
-                <a href="index.html" class="brand">
-                    🐶
+                <a class="brand" id="home-button">
+                    📟
                 </a>
             </div>
             <div class="nav-right">
-                <a href="https://github.com/lmgibson">Git</a>
+                <a href="https://github.com/lmgibson">Github</a>
                 <a href="https://www.linkedin.com/in/lmgibson/">LinkedIn</a>
             </div>
         </nav>
 
         <div class="inner">
-            <h1> Doggo's are
-                <span class="typer" id="main" data-words="love,fun,forever,life" data-delay="100" data-deleteDelay="1000"></span>
-                <span class="cursor" data-owner="main"></span>
-            </h1>
-            <script async src="https://unpkg.com/typer-dot-js@0.1.0/typer.js"></script>
-
+            <h1 id="name-and-title">Landon Gibson</h1>
+            <p class="text-grey text-left">Research Scientist @<a href="https://www.capolicylab.org/">CPL</a></p>
+            <div class="section">
+                <h1 class="text-dark text-left">What I'm Learning</h1>
+                <p>
+                    <ul>
+                        <li>Javascript using MDN and open source sites on github</li>
+                        <li>Building an open REST API, which so far is harder than I thought</li>
+                        <li>Exploring DevOps tools! Data infrastructure is fascinating</li>
+                        <li>Figuring out a method to assess predictive validity of a tool 
+                            that is used to assign interventions, which could influence the 
+                            outcome being predicted.</li>
+                    </ul>
+                </p>
+            </div>
+<!-- Old code accessing dog API
             <div class="section">
                 <h1 id="test" class="text-primary text-center">Doggo Corner</h1>
                 <div class="row is-center">
                     <a id="give-dog" class="button outline dark">🐶</a>
                 </div>
                 <div id="dog-pic" class="row is-center">
-                    <!-- dog pic goes here -->
+                    dog pic goes here
                 </div>
             </div>
-
-            <div class="section" id="message">
-                <h1 class="text-primary text-center">Task Timeline</h1>
-                <p id="date">
-                    <!-- insert date here -->
-                </p>
-                <ol>
-                    <li class="list">Extend jQuery?</li>
-                    <li class="list">Figure out how to use require.js</li>
-                </ol>
-            </div>
-
+-->
         <!-- Old ye api code
             <div class="section">
                 <h1 class="text-primary text-center">Kanye Quote</h1>
