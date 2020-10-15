@@ -1,11 +1,11 @@
 'use strict'
 
 // Checking knoweldge
-let homeButton = document.getElementById('home-button')
+// let homeButton = document.getElementById('home-button')
 
-homeButton.addEventListener('click', evt => {
-    console.log("WOOF!")
-})
+// homeButton.addEventListener('click', evt => {
+//     console.log("WOOF!")
+// })
 
 // Old ye api code and jquery code
 /*

@@ -7,7 +7,6 @@
     <meta name="description" content="A mental data dump">
     <title>Data Science and Causal Inference</title>
     <script defer src="src/main.js" charset="utf-8"></script>
-    <script src="assets/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
     <link rel="stylesheet" href="https://unpkg.com/chota@latest">
     <!-- css from: https://jenil.github.io/chota/#! -->
@@ -35,17 +34,48 @@
 
             <div class="section">
                 <h1 class="text-dark text-left" id="post-title">What I'm Learning</h1>
-                <p class="text-grey text-left">10/6/2020</p>
+                <p class="text-grey text-left">10/14/2020</p>
                 <p>
                     <ul>
-                        <li><a href="https://javascript.info/">JavaScript</a> using 
-                            <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash">MDN</a> 
-                            and open source sites on github.</li>
-                        <li>Building an open REST API, which so far is harder than I thought.</li>
-                        <li>Exploring DevOps tools! Data infrastructure is fascinating.</li>
-                        <li>Figuring out a method to assess predictive validity of a tool 
-                            that is used to assign interventions, which could influence the 
-                            outcome being predicted.</li>
+                        <li>
+                            <h5>Coding:</h5>
+                            Recently took some time to learn javascript to build this website. 
+                            I also built a simple web-app that keeps track of our receipts
+                            and calculates who owes who what. Building the monthly bills app 
+                            was especially interesting since I had to build the backend API
+                            using flask. Now that I have figured out the general structure
+                            of building web-apps with some very basic tools, I want to try
+                            building a website to host data I scrape on freelancer rates.
+                        </li>
+                        <br>
+                        <li>
+                            <h5>Data Infrastructure:</h5>
+                            At work I've spent a week setting up some data infrastructure.
+                            What I mean by 'infrastructure' is setting up my bash environment,
+                            enabling conda environments, and starting to develop an internal
+                            package. All of this was complicated by the fact that my datascience
+                            is done an a windows server with no internet access!
+                        </li>
+                        <br>
+                        <li>
+                            <h5>Methods:</h5>
+                            <p>
+                                I'm currently trying to estimate the predictive validity of
+                                a tool where the users, for whom I'm making predictions, 
+                                received an intervention before the prediction period was over.
+                                For example, we want to predict if a user will come back to our
+                                site within a month based on some user characteristics. However,
+                                we find out that halfway through the month the user received an
+                                email from marketing notifying them about some information. How 
+                                do you validate the predictive power of your model in this instance?
+                            </p>
+                            <p>                                
+                                I'm also working on a review of the heterogenous treatment
+                                effects estimation literature. I know of some obvious
+                                examples by Susan Athey, but now I'm trying to felsh out the 
+                                literature. This should be an interesting exercise.
+                            </p>
+                        </li>
                     </ul>
                 </p>
             </div>
@@ -55,6 +85,5 @@
     <footer id="about">
         <i class="wavy">Ride on </i>🚲
     </footer>
-    
 </body>
 </html>
