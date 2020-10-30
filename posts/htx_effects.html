@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A mental data dump">
+    <title>Data Science and Causal Inference</title>
+    <script defer src="src/main.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <!-- css from: https://jenil.github.io/chota/#! -->
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="https://github.com/lmgibson">Github</a>
+                <a href="https://www.linkedin.com/in/lmgibson/">LinkedIn</a>
+                <a href="https://docs.google.com/document/d/1KpB9fZtV_TzHA3QGTPWCFVCFyfBKvq0zpvqc8Hasflc/edit?usp=sharing">Résumé</a>
+            </div>
+            <div class="nav-right">
+                <img src="https://upload.wikimedia.org/wikipedia/en/8/8a/DogCow_from_LaserWriter_8.png" alt="Clarus">
+            </div>
+        </nav>
+
+        <div class="inner">
+            <h1 id="name-and-title">Landon Gibson</h1>
+            <p class="text-grey text-left">Research Scientist 
+                <a href="https://www.capolicylab.org/staff/landon-gibson/">@CPL</a>
+            </p>
+
+            <div class="section">
+                <h1 class="text-dark text-left" id="post-title">Notes on Heterogeneous Treatment Effects</h1>
+                <p class="text-grey text-left">10/14/2020</p>
+                <p>
+                    I was recently tasked with learning about how estimation of heterogeneous
+                    treatment effects may be applicable to social services data science. Below
+                    are some of my notes from my first take it at.
+                </p>
+                <h5>Why heterogeneous treatment effects?</h5>
+                <ul>
+                    <li>
+                        Why heterogeneous treatment effects?
+                        <p>
+                            There are two goals for estimation of heterogeneous treatment effects:
+                            <ul>
+                                <li>
+                                    Valid Inference:
+                                    <p>
+                                        If you are interested in developing a targeting policy then you
+                                        likely want to make valid inferences within each subgroup. 
+                                        For example, let's say you developed and evaluated via RCT a 
+                                        program that provides rapid re-housing to individuals who are 
+                                        about to become homeless and now you are planning to roll it out 
+                                        county wide. Unfortunately, you can't afford to enroll every single 
+                                        person who walks into social services doors. In fact, you need to 
+                                        be diligent about targeting the treatment to those for whom it would 
+                                        be most effective. 
+                                    </p>
+                                </li>
+                                <li>
+                                    Pattern recognition and data mining:
+                                    <p>
+                                        The group name needs work, but essentially this is everyone else. This 
+                                        group is often just interested in understanding what might be mechanisms
+                                        behind the interventions effectiveness or trying to understand groups for 
+                                        whom the intervention was poor so they can target future experimentation
+                                        to that group. For example, you have evaluated your housing program but 
+                                        know from exit interviews it didn't work great for everyone. As a result, 
+                                        you may be more interested in understanding for whom it worked poorly and 
+                                        what may have been some of the mechanisms behind the poor performance.
+                                    </p>
+                                </li>
+                            </ul>
+                        </p>
+                    </li>
+                    <li>
+                        My focus: Optimal Targeting Policy
+                        <p>
+                            For what I'm currently working on -- social services data science -- my interest is in 
+                            developing an optimal targeting policy that can be put to pen and paper and implemented 
+                            by service providers working directly with clients. Therefore, I need a method that will 
+                            be easily interpretable and make valid inferences.
+                        </p>
+                    </li>
+                    <li>
+                        Cool. So how do we estimate heterogeneous treatment effects?
+                        <p>
+                            We should start with the setup and background information you need. First, what are we 
+                            estimating when estimating heterogeneous treatment effects? Ideally, we would be estimating
+                            the individual level treatment effect. While an individual level treatment effect is possible
+                            -- see synthetic control literature -- it's not useful because it takes an an extraordinary
+                            amount of data and it is unclear how you would estimate confidence intervals. 
+                        </p>
+                        <p>
+                            Because estimation of individual level treatment effects is unreasonable -- given that we
+                            want to make valid inferences -- then we have to estimate treatment effects in subgroups.
+                            A subgroup specific treatment effect is known as the Conditional Average Treatment Effect 
+                            (CATE) which can be represented as E[Y(1) - Y(0) | X=x] where Y(1) and Y(0) are the 
+                            potential outcomes under treatment and control, respectively.
+                        </p>
+                        <p>
+                            Methods to estimate heterogeneous treatment effects are all simply estimating the CATE but 
+                            in different ways.
+                        </p>
+                        <p>
+                            There are basically two ways of doing it. There are a group of algorithms called "meta-algorithms"
+                            or "meta-learners" that are similar to one another and then there are Causal Forests.
+                            <ul>
+                                <li>
+                                    Meta-Algorithms: T-Learner, S-Learner, X-Learner, R-Learner?
+                                    <p>
+                                        <ul>
+                                            <li>
+                                                T-Learner: A derivation of "Two-Learner", the T-learner algorithm takes 
+                                                a direct approach to estimating the CATE by estimating a model to predict
+                                                the outcome among the treated units and a separate model to predict the 
+                                                outcome among the control units. The choice of model is up to the user but
+                                                a rule of thumb is that linear regression is appropriate if the relationship
+                                                is mostly linear, and if not, random forest is a powerful non-parametric 
+                                                alternative.
+                                            </li>
+                                            <li>
+                                                S-Learner: A shortening of "Single-Learner", the S-Learner algorithm 
+                                                uses only one model that incorporates the covariates and an indicator 
+                                                for whether or not a unit was treated and uses them to predict the outcome.
+                                                With the model in hand, the S-learner then changes the treatment indicator
+                                                for each observation and esitmates their outcome under treatment and under 
+                                                control.
+                                            </li>
+                                            <li>
+                                                X-Learner: A more recent development in the heterogeneous treatment effects 
+                                                literature. The X-learner is a modified version of the T-learner with the goal 
+                                                of improving the T-learner for samples where the treated group is small but the 
+                                                control group is large. It does this by first estimating a T-learner, so a model 
+                                                for the treated group and a model for the control group. The additional step is 
+                                                to use the other groups model to estimate the counterfactual, calculate the 
+                                                heterogeneous treatment effects, and run another T-learner on the heterogeneous 
+                                                treatment effects to estimate the group average treatment effects.
+                                            </li>
+                                        </ul>
+                                    </p>
+                                </li>
+                                <li>
+                                    Causal Forests 
+                                    <p>
+                                        The above meta-learners worked by predicting the observed outcome and the counterfactual 
+                                        outcome in different ways. Causal Forests, however, predict the treatment effect directly 
+                                        and build trees in order to maximize the variance in the treatment effect and the 
+                                        precision of the estimates in each leaf. For example, the meta-learners above used 
+                                        an unmodified objective function built around the outcome. A common objective function 
+                                        for a continuous outcome is the mean-squared error which is the sum of the squared 
+                                        difference between the predicted outcome and the observed outcome. Causal forests, 
+                                        however, change the objective function to the difference between the estimated ATE 
+                                        and the true ATE. However, the true ATE is never observed so how can this model 
+                                        be trained? The authors show that despite the true ATE never being observed it actually is not 
+                                        neccessary to train the model (See Athey & Imbens 2016 for more detail). 
+                                    </p>
+                                </li>
+                            </ul>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer id="about">
+        <i class="wavy">Ride on </i>🚲
+    </footer>
+</body>
+</html>
