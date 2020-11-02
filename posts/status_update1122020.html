@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A mental data dump">
+    <title>Data Science and Causal Inference</title>
+    <script defer src="src/main.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/index.css" />
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <!-- css from: https://jenil.github.io/chota/#! -->
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="https://github.com/lmgibson">Github</a>
+                <a href="https://www.linkedin.com/in/lmgibson/">LinkedIn</a>
+                <a href="https://docs.google.com/document/d/1KpB9fZtV_TzHA3QGTPWCFVCFyfBKvq0zpvqc8Hasflc/edit?usp=sharing">Résumé</a>
+            </div>
+            <div class="nav-right">
+                <img src="https://upload.wikimedia.org/wikipedia/en/8/8a/DogCow_from_LaserWriter_8.png" alt="Clarus">
+            </div>
+        </nav>
+
+        <div class="inner">
+            <h1 id="name-and-title">Landon Gibson</h1>
+            <p class="text-grey text-left">Research Scientist 
+                <a href="https://www.capolicylab.org/staff/landon-gibson/">@CPL</a>
+            </p>
+
+            <div class="section">
+                <h1 class="text-dark text-left" id="post-title">What I'm Learning</h1>
+                <p class="text-grey text-left">11/2/2020</p>
+                <p>
+                    <ul>
+                        <li>
+                            <h5>Coding:</h5>
+                            I read hacker news relatively frequently and a book that I kept seeing
+                            mentioned was "Clean Code" by Robert Martin. For those -- like me --
+                            who were unaware of this book, it seems to be recommended as a guide
+                            on how to structure your code with a focus on making the code easily 
+                            maintainable and something that can be built on. So far, I think of it
+                            as a guide on how to structure your code as you would the mass of wires
+                            that feed all the electronics on your desk. When the wires become tangled
+                            and intertwined it makes adding a new cable (or changing out an old one)
+                            very difficult and time consuming. Instead, you want to bundle your wires
+                            and organize them so you can quickly and easily find the old wire add 
+                            change it out. Overall, excited to work through this book.
+                        </li>
+                        <br>
+                        <li>
+                            <h5>Data Science Infrastructure:</h5>
+                            In my last update I had spent some time building a local conda channel 
+                            on my internet-less work server, to much success. After getting a library channel for Python
+                            working I then turned to R with the goal of creating a repo on the server so I can 
+                            easily control package versions and update them 
+                            when I want. It turns out that this process is more 
+                            difficult than Python, largely because you have to do it from R directly.
+                            In order to make this process easier I built a small command line tool, 
+                            which I creatively call 'miniCRAN_cli', that is a wrapper around the 
+                            R 'miniCRAN' package. Check it out on my github: 
+                            <a href="https://github.com/lmgibson/miniCRAN_cli">miniCRAN_cli</a>
+                        </li>
+                        <br>
+                        <li>
+                            <h5>Methods:</h5>
+                            <p>
+                                I've now spent a significant amount of time investigating 
+                                the estimation of heterogeneous treatment effects estimation, and 
+                                I'm finding the amount of literature to be impressive. At the highest level,
+                                there are a grouping of methods known as "meta-algorithms" or "meta-learners"
+                                that seem to be popularly used for uplift modeling in marketing. For each
+                                type of learner, one can spend a significant amount of time reading papers 
+                                where each one customizes a supervised learning tool to better estimate
+                                heterogeneity of treatment effects. Unfortunately, all this noise is 
+                                distracting and makes it unclear as to how useful the very fancy methods 
+                                really are. I've also noticed that almost all of these methods are 
+                                built for experimental data and very little attention has been given 
+                                to selection on unobservables. I can definitely understand why this 
+                                is the case, but it's unfortunate because it means these methods are 
+                                not going to be useful for where I currently work.
+                            </p>
+                        </li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer id="about">
+        <i class="wavy">Ride on </i>🚲
+    </footer>
+</body>
+</html>
