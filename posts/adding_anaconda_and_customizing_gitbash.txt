@@ -1,0 +1,102 @@
+Title: Making a Windows Data Science Environment feel like Mac
+Author: Landon Gibson
+Date: 10/8/2020
+
+Problem
+    - You are a mac user, shell wizard, custom iterm2, and have a carefully curated
+        .bash_profile.
+    - Unfortunately, you have to use a windows environment for your data work.
+    - But wait, there's a solution! Here's how.
+
+Step 1: Install git-bash
+    - https://gitforwindows.org/
+    - Doesn't apply to CPL.
+
+Step 2: Create a .bash_profile
+    - Background: The .bash_profile is a script that is run by shell when it starts up.
+        For example, if you put `echo "Hello, World!"` inside your .bash_profile then
+        when you launch terminal (or git-bash) the first line will say, "Hello, world!".
+        Thus, you can edit the .bash_profile with commands that will be run on load.
+        This is what we'll use to tell Anaconda to let us run conda commands from git-bash.
+
+    - Creating the file: Using git-bash, navigate to your user folder at
+        C:\User\[your username]. Then type `touch .bash_profile`.
+
+    - Now open .bash_profile in your editor of choice (I use sublime text) and drop
+        in the following code block:
+        `echo "Hello, World!"`
+
+    - Close git-bash and relaunch it. It should say "Hello, World!" at the top. If
+        it didn't, then message me and we can troubleshoot. If it did work,
+        congrats! The hardest part is over!
+
+    - Now you can have all kinds of fun modifying the .bash_profile. If you want
+        to see mine let me know. For now though I'll just give you the code you need
+        to get anaconda working with git-bash:
+
+        # Switching into home folder
+        cd "/c/Users/[your_username]/"
+
+        # Sourcing Anaconda Scripts to enable conda with git-bash
+        . 'C:\ProgramData\Anaconda3\Scripts\activate'
+        . 'C:\ProgramData\Anaconda3\etc\profile.d\conda.sh'
+
+    - Add the above code to the .bash_profile, restart git-bash (or
+        type source .bash_profile), and try typing `conda --version`.
+        Did it work? Nice!
+
+    - From here there are a bunch of additional customizations you can add.
+        I like to add aliases to my .bash_profile to make my life easier.
+        For example I set `alias elp="cd `/e/Projects/elp/Homeless Prediction'"`
+        to quickly get into the elp server. You can also create functions.
+
+Step 3: Customizing the prompt
+    - Tired of a kind of ugly prompt? Not sure what MINGX64 is? Let's fix that.
+
+    - First you'll need to find the git-prompt.sh at
+        C:\Program Files\Git\etc\profile.d\git-prompt.sh
+        and copy it to your user folder (C:\Users\[your_user_name])
+
+    - Next, open the file in a text editor and copy paste this rather large
+        code block into it.
+
+    if test -f /etc/profile.d/git-sdk.sh
+    then
+        TITLEPREFIX=" "
+    else
+        TITLEPREFIX=" "
+    fi
+
+    if test -f ~/.config/git/git-prompt.sh
+    then
+        . ~/.config/git/git-prompt.sh
+    else
+        PS1='\[\033]0;\W\007\]' # Sets window title
+        PS1="$PS1"'\[${bold}\]\n' # New line
+        PS1="$PS1"'\[\033[32m\]\u' # Adds user name
+        PS1="$PS1"'\[\e[1;37m\] in '
+        PS1="$PS1"'\e[1;36m($CONDA_DEFAULT_ENV) ' #Adds conda environment in a not-annoying way
+        PS1="$PS1"'\[\e[1;37m\] at '
+        PS1="$PS1"'\[\e[1;35m\]\h' # Adds server name
+        if test -z "$WINELOADERNOEXEC"
+        then
+            GIT_EXEC_PATH="$(git --exec-path 2>/dev/null)"
+            COMPLETION_PATH="${GIT_EXEC_PATH%/libexec/git-core}"
+            COMPLETION_PATH="${COMPLEITION_PATH%/lib/git-core}"
+            COMPLETION_PATH="$COMPLEITION_PATH/share/git/completion"
+            if test -f "$COMPLETION_PATH/git-prompt.sh"
+            then
+                . "$COMPLETION_PATH/git-completion.bash"
+                . "$COMPLEITION_PATH/git-prompt.sh"
+                PS1="$PS1"'\[\033[36m\]' # change color to cyan
+                PS1="$PS1"'`__git_ps1`'  # bash function
+            fi
+        fi
+        PS1="$PS1"'\n'
+        PS1="$PS1"'\[\033[33m\]\w\n' # Working directory
+        PS1="$PS1"'\[\033[0m\]' # Change color
+        PS1="$PS1"'$ ' # Prompt always $. Can change to whatever symbol.
+    fi
+
+    MSYS2_PS1="$PS1"
+
